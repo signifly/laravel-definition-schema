@@ -12,7 +12,7 @@ $ composer require signifly/laravel-definition-schema
 
 The package will automatically register itself.
 
-Add the definitions route inside your `RouteServiceProvider`:
+Add the definitions route inside your `RouteServiceProvider` or your routes file:
 ```php
 Route::definitions();
 ```
