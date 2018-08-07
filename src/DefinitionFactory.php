@@ -49,7 +49,7 @@ class DefinitionFactory
      */
     public function make()
     {
-        $namespace = __NAMESPACE__;
+        $namespace = "App\\Definitions";
         $type = studly_case($this->type);
         $entity = studly_case($this->entity);
         $class = "{$namespace}\\{$type}\\{$entity}{$type}Definition";
