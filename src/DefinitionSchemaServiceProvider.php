@@ -2,6 +2,7 @@
 
 namespace Signifly\DefinitionSchema;
 
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Signifly\DefinitionSchema\Commands\DefinitionMakeCommand;
 use Signifly\DefinitionSchema\Http\Controllers\DefinitionController;
