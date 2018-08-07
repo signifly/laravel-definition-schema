@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api\Admin;
+namespace Signifly\DefinitionSchema\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
