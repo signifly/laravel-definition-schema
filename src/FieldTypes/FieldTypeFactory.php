@@ -34,7 +34,7 @@ class FieldTypeFactory
             return new $this->name;
         }
 
-        $class = __NAMESPACE__ . "\\" . Str::studly($this->name);
+        $class = __NAMESPACE__ . "\\" . Str::studly($this->name) . 'FieldType';
 
         return new $class;
     }
