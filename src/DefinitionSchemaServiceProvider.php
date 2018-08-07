@@ -4,8 +4,6 @@ namespace Signifly\DefinitionSchema;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
-use Signifly\DefinitionSchema\Commands\DefinitionMakeCommand;
-use Signifly\DefinitionSchema\Http\Controllers\DefinitionController;
 
 class DefinitionSchemaServiceProvider extends ServiceProvider
 {
@@ -19,13 +17,13 @@ class DefinitionSchemaServiceProvider extends ServiceProvider
         Route::macro('definitions', function () {
             return $this->get(
                 'definitions/{type}/{entity}',
-                DefinitionController::class.'@show'
+                Http\Controllers\DefinitionController::class.'@show'
             );
         });
 
         if ($this->app->runningInConsole()) {
             $this->commands([
-                DefinitionMakeCommand::class,
+                Commands\DefinitionMakeCommand::class,
             ]);
         }
     }
