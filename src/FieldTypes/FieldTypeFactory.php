@@ -1,0 +1,41 @@
+<?php
+
+namespace Signifly\DefinitionSchema\FieldTypes;
+
+use Illuminate\Support\Str;
+
+class FieldTypeFactory
+{
+    /**
+     * The class name.
+     *
+     * @var string
+     */
+    protected $name;
+
+    /**
+     * Create a new FieldType.
+     *
+     * @param string $name
+     */
+    public function __construct(string $name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * Make the FieldType instance.
+     *
+     * @return \Signifly\DefinitionSchema\FieldTypes\FieldType
+     */
+    public function make()
+    {
+        if (class_exists($this->name)) {
+            return new $this->name;
+        }
+
+        $class = __NAMESPACE__ . "\\" . Str::studly($this->name);
+
+        return new $class;
+    }
+}

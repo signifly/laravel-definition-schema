@@ -48,11 +48,11 @@ class Filter implements Arrayable
 
     public function fieldType($class, Closure $callable)
     {
-        $this->fieldType = new $class;
+        $fieldType = (new FieldTypeFactory($class))->make();
 
-        $callable($this->fieldType);
+        $callable($fieldType);
 
-        $this->fieldType = $this->fieldType->build();
+        $this->fieldType = $fieldType->build();
 
         return $this;
     }

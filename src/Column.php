@@ -4,6 +4,7 @@ namespace Signifly\DefinitionSchema;
 
 use Closure;
 use Illuminate\Contracts\Support\Arrayable;
+use Signifly\DefinitionSchema\FieldTypes\FieldTypeFactory;
 
 class Column implements Arrayable
 {
@@ -77,7 +78,7 @@ class Column implements Arrayable
      */
     public function fieldType(string $class, Closure $callable)
     {
-        $fieldType = new $class;
+        $fieldType = (new FieldTypeFactory($class))->make();
 
         $callable($fieldType);
 

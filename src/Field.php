@@ -65,7 +65,7 @@ class Field implements Arrayable
      */
     public function fieldType(string $className, Closure $callable)
     {
-        $fieldType = new $className;
+        $fieldType = (new FieldTypeFactory($className))->make();
 
         if (! $fieldType instanceof FieldType) {
             throw new InvalidFieldTypeException();
