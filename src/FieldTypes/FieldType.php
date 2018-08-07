@@ -2,11 +2,9 @@
 
 namespace Signifly\DefinitionSchema\FieldTypes;
 
-use Signifly\DefinitionSchema\Concerns\HasProps;
-
 abstract class FieldType
 {
-    use HasProps;
+    use Concerns\HasProps;
 
     /**
      * The specific field type.

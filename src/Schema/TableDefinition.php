@@ -3,13 +3,11 @@
 namespace Signifly\DefinitionSchema\Schema;
 
 use Closure;
-use Signifly\DefinitionSchema\Concerns\HasColumns;
-use Signifly\DefinitionSchema\Concerns\HasFilters;
 
 abstract class TableDefinition extends Definition
 {
-    use HasColumns;
-    use HasFilters;
+    use Concerns\HasColumns;
+    use Concerns\HasFilters;
 
     /**
      * The batch schema for the definition schema.

@@ -2,15 +2,11 @@
 
 namespace Signifly\DefinitionSchema\Schema;
 
-use Signifly\DefinitionSchema\Concerns\HasTabs;
-use Signifly\DefinitionSchema\Concerns\HasFields;
-use Signifly\DefinitionSchema\Concerns\HasSidebars;
-
 abstract class ViewDefinition extends Definition
 {
-    use HasFields;
-    use HasSidebars;
-    use HasTabs;
+    use Concerns\HasFields;
+    use Concerns\HasSidebars;
+    use Concerns\HasTabs;
 
     /**
      * Whether or not activity should be shown.
