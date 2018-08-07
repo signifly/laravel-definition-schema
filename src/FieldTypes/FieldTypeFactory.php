@@ -30,7 +30,7 @@ class FieldTypeFactory
      */
     public function make()
     {
-        if (class_exists($this->name)) {
+        if (Str::contains($this->name, 'FieldType') && class_exists($this->name)) {
             return new $this->name;
         }
 
