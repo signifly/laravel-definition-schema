@@ -4,11 +4,13 @@ namespace Signifly\DefinitionSchema\Schema;
 
 use Signifly\DefinitionSchema\Action;
 use Illuminate\Contracts\Support\Arrayable;
+use Signifly\DefinitionSchema\Concerns\Buildable;
+use Signifly\DefinitionSchema\Concerns\HasActions;
 
 class Batch implements Arrayable
 {
-    use Concerns\Buildable;
-    use Concerns\HasActions;
+    use Buildable;
+    use HasActions;
 
     protected $sequential = false;
 

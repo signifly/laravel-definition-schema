@@ -3,12 +3,14 @@
 namespace Signifly\DefinitionSchema\Schema;
 
 use Illuminate\Http\Request;
+use Signifly\DefinitionSchema\Concerns\HasActions;
+use Signifly\DefinitionSchema\Concerns\HasModifiers;
 use Signifly\DefinitionSchema\Contracts\DefinitionContract;
 
 abstract class Definition implements DefinitionContract
 {
-    use Concerns\HasActions;
-    use Concerns\HasModifiers;
+    use HasActions;
+    use HasModifiers;
 
     /**
      * The endpoint array.
