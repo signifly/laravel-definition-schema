@@ -4,6 +4,7 @@ namespace Signifly\DefinitionSchema;
 
 use Closure;
 use Illuminate\Contracts\Support\Arrayable;
+use Signifly\DefinitionSchema\FieldTypes\FieldTypeFactory;
 
 class Filter implements Arrayable
 {

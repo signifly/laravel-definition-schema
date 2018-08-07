@@ -5,6 +5,7 @@ namespace Signifly\DefinitionSchema;
 use Closure;
 use Illuminate\Contracts\Support\Arrayable;
 use Signifly\DefinitionSchema\FieldTypes\FieldType;
+use Signifly\DefinitionSchema\FieldTypes\FieldTypeFactory;
 use Signifly\DefinitionSchema\Exceptions\InvalidFieldTypeException;
 
 class Field implements Arrayable
