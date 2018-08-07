@@ -19,7 +19,7 @@ class DefinitionSchemaServiceProvider extends ServiceProvider
             return $this->get(
                 'definitions/{type}/{entity}',
                 '\Signifly\DefinitionSchema\Http\Controllers\DefinitionController@show'
-            );
+            )->name('definitions.show');
         });
 
         if ($this->app->runningInConsole()) {
