@@ -2,6 +2,8 @@
 
 namespace Signifly\DefinitionSchema;
 
+use Illuminate\Contracts\Support\Arrayable;
+
 class Modifier implements Arrayable
 {
     /**
