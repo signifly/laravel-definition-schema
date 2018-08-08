@@ -3,30 +3,21 @@
 namespace Signifly\DefinitionSchema\FieldTypes;
 
 use Closure;
+use Signifly\DefinitionSchema\Concerns\HasFields;
 
 class ModalFieldType extends FieldType
 {
+    use HasFields;
+
     protected $id = 'vButtonAction';
 
     protected $data;
 
     protected $endpoint;
 
-    protected $fields = [];
-
     protected $onSubmit;
 
     protected $title;
-
-    public function addField($name, $label, $field, Closure $callable)
-    {
-        $fieldType = new $field;
-        $callable($fieldType);
-        $fieldType = $fieldType->build();
-        $field = compact('name', 'label', 'fieldType');
-        array_push($this->fields, $field);
-        return $this;
-    }
 
     public function button($text, $icon = 'plus', $type = 'primary')
     {
@@ -69,7 +60,7 @@ class ModalFieldType extends FieldType
             'id' => 'modal',
             'endpoint' => $this->endpoint,
             'title' => $this->title ?? $this->props['title'],
-            'fields' => $this->fields,
+            'fields' => $this->preparedFields(),
             'data' => $this->data,
         ]);
     }

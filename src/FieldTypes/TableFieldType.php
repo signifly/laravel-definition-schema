@@ -3,25 +3,16 @@
 namespace Signifly\DefinitionSchema\FieldTypes;
 
 use Closure;
+use Signifly\DefinitionSchema\Concerns\HasColumns;
 
 class TableFieldType extends FieldType
 {
+    use HasColumns;
+
     protected $id = 'vTable';
-
-    protected $columns = [];
-
-    public function addColumn($name, $label, $field, Closure $callable)
-    {
-        $fieldType = new $field;
-        $callable($fieldType);
-        $fieldType = $fieldType->build();
-        $column = compact('name', 'label', 'fieldType');
-        array_push($this->columns, $column);
-        return $this;
-    }
 
     protected function beforeBuild()
     {
-        $this->addProp('columns', $this->columns);
+        $this->addProp('columns', $this->preparedColumns());
     }
 }
