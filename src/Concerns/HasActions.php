@@ -21,7 +21,7 @@ trait HasActions
      * @param string $status
      * @return \Signifly\DefinitionSchema\Table\Actions\Action
      */
-    public function addAction($title, $status)
+    public function addAction($title, $status = null)
     {
         $action = new Action($title, $status);
 
