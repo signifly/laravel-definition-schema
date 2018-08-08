@@ -3,7 +3,7 @@
 namespace Signifly\DefinitionSchema\FieldTypes;
 
 use Closure;
-use Signifly\DefinitionSchema\Table\Actions\Action;
+use Signifly\DefinitionSchema\Action;
 
 class LineImageFieldType extends FieldType
 {
