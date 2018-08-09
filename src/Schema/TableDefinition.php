@@ -65,6 +65,10 @@ abstract class TableDefinition extends Definition
             array_set($schema, 'actions', $this->preparedActions());
         }
 
+        if ($this->hasFilters()) {
+            array_set($schema, 'filters', $this->preparedFilters());
+        }
+
         if ($this->hasIncludes()) {
             array_set($schema, 'includes', $this->includes);
         }
