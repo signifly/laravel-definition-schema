@@ -12,18 +12,30 @@ class Batch implements Arrayable
     use Buildable;
     use HasActions;
 
-    protected $sequential = false;
+    protected $sequential;
 
     protected $selectedOptions;
+
+    /**
+     * Checks if sequential is active.
+     *
+     * @return boolean
+     */
+    public function hasSequential()
+    {
+        return !! $this->sequential;
+    }
 
     /**
      * Add sequential editing.
      *
      * @return void
      */
-    public function sequential()
+    public function sequential($url = '')
     {
-        return $this->sequential = true;
+        $this->sequential = $url;
+
+        return $this;
     }
 
     /**
@@ -47,11 +59,16 @@ class Batch implements Arrayable
      */
     public function toArray()
     {
-        return [
-            'sequential' => $this->sequential,
+        $data = [
             'bulk' => $this->hasActions(),
             'actions' => $this->preparedActions(),
             'selectedOptions' => $this->selectedOptions ?: (object) [],
         ];
+
+        if ($this->hasSequential()) {
+            array_set($data, 'sequential.url', $this->sequential);
+        }
+
+        return $data;
     }
 }
