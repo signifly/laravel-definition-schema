@@ -20,6 +20,13 @@ class Action implements Arrayable
     protected $endpoint = [];
 
     /**
+     * Hide the action.
+     *
+     * @var array
+     */
+    protected $hide;
+
+    /**
      * The action icon.
      *
      * @var string
@@ -61,6 +68,21 @@ class Action implements Arrayable
     public function endpoint($url, $method = 'post')
     {
         return $this->addProp('endpoint', compact('url', 'method'));
+    }
+
+    /**
+     * Hide field type.
+     *
+     * @param  string $key
+     * @param  mixed $value
+     * @param  string $operator
+     * @return self
+     */
+    public function hide(string $key, $value, string $operator = 'eq')
+    {
+        $this->hide = compact('key', 'operator', 'value');
+
+        return $this;
     }
 
     public function icon($icon)
@@ -113,6 +135,8 @@ class Action implements Arrayable
             return $collection->put('status', $this->status);
         })->when($this->icon, function ($collection) {
             return $collection->put('icon', $this->icon);
+        })->when($this->hide, function ($collection) {
+            return $collection->put('hide', $this->hide);
         })->all();
     }
 }
