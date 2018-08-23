@@ -23,6 +23,13 @@ abstract class FieldType
     protected $action;
 
     /**
+     * Hide the field type.
+     *
+     * @var array
+     */
+    protected $hide;
+
+    /**
      * The reference text of the field type.
      *
      * @var string
@@ -80,6 +87,10 @@ abstract class FieldType
             'props' => $this->props,
         ];
 
+        if ($this->hide) {
+            array_set($schema, 'hide', $this->hide);
+        }
+
         if ($this->width) {
             array_set($schema, 'width', $this->width);
         }
@@ -116,6 +127,21 @@ abstract class FieldType
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Hide field type.
+     *
+     * @param  string $key
+     * @param  mixed $value
+     * @param  string $operator
+     * @return self
+     */
+    public function hide(string $key, $value, string $operator = 'eq')
+    {
+        $this->hide = compact('key', 'operator', 'value');
+
+        return $this;
     }
 
     /**
